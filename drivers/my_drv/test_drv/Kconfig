@@ -1,0 +1,15 @@
+menu "All Test Drv support"
+
+
+config ALL_TEST_DRIVER
+	bool "all test driver support"
+	default y
+	depends on MY_TEST_DRIVER
+	help
+	  This option enables support for the all test driver
+	  on my test driver.
+
+
+
+endmenu
+

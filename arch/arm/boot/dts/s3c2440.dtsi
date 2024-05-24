@@ -1,0 +1,75 @@
+/*
+ * Samsung's S3C2416 SoC device tree source
+ *
+ * Copyright (c) 2013 Heiko Stuebner <heiko@sntech.de>
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License version 2 as
+ * published by the Free Software Foundation.
+ */
+#include <dt-bindings/clock/s3c2410.h>
+#include "s3c24xx.dtsi"
+#include "s3c2440-pinctrl.dtsi"
+
+/ {
+
+	model = "SMDK24440";
+	compatible = "samsung,smdk2440";
+	
+	cpus {
+		#address-cells = <1>;
+		#size-cells = <0>;
+
+		cpu {
+			compatible = "arm,arm926ej-s";
+		};
+	};
+
+	interrupt-controller@4a000000 {
+		compatible = "samsung,s3c2410-irq";
+	};
+
+	clocks: clock-controller@0x4c000000 {
+		compatible = "samsung,s3c2440-clock";
+		reg = <0x4c000000 0x20>;
+		#clock-cells = <1>;
+	};
+
+	pinctrl@56000000 {
+		compatible = "samsung,s3c2440-pinctrl";
+	};
+
+	timer@51000000 {
+		clocks = <&clocks PCLK_PWM>;
+		clock-names = "timers";
+	};
+
+	uart_0: serial@50000000 {
+		compatible = "samsung,s3c2440-uart";
+		clock-names = "uart";
+		clocks = <&clocks PCLK_UART0>;
+	};
+
+	watchdog: watchdog@53000000 {
+		interrupts = <1 9 27 3>;
+		clocks = <&clocks PCLK>;
+		clock-names = "watchdog";
+	};
+
+	rtc: rtc@57000000 {
+		compatible = "samsung,s3c2410-rtc";
+		clocks = <&clocks PCLK_RTC>;
+		clock-names = "rtc";
+	};
+	/* */
+    nand0: nand@4e000000 {
+    	compatible = "samsung,s3c2440-nand";
+	    reg = <0x4e000000 0x40>;
+	    interrupts = <0 0 24 3>;
+	    clocks = <&clocks HCLK_NAND>;
+	    clock-names = "nand";
+        pinctrl-names = "default";
+        pinctrl-0 = <&nand_pinctrl>;
+        status = "disabled";
+   };
+};

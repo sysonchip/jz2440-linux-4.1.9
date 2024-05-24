@@ -1,0 +1,10 @@
+#! /bin/sh
+
+make uImage
+
+make dtbs
+
+cp arch/arm/boot/dts/jz2440.dtb /home/book/project/nfs/
+
+cp arch/arm/boot/uImage /home/book/project/nfs
+

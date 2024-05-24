@@ -1,0 +1,12 @@
+menu "Test Misc Device support"
+
+config TEST_MISC_DEVICE_DRV
+    bool "Test misc device drv support"
+    default y
+    depends on MY_TEST_DRIVER
+    help
+	  This option enables support for the test misc device drv
+	  on my test driver.
+
+endmenu
+

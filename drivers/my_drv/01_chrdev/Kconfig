@@ -1,0 +1,12 @@
+menu "Test Chrdev support"
+
+config TEST_CHRDEV
+    bool "Test Chrdev support"
+    default y
+    depends on MY_TEST_DRIVER
+    help
+        This option enables support for the test chrdev
+        on my test driver.
+endmenu
+
+

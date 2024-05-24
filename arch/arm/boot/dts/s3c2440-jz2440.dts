@@ -1,0 +1,35 @@
+/*
+ * SAMSUNG SMDK2416 board device tree source
+ *
+ * Copyright (c) 2013 Heiko Stuebner <heiko@sntech.de>
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License version 2 as
+ * published by the Free Software Foundation.
+ */
+/dts-v1/;
+
+
+#include "s3c2440.dtsi"
+
+#include <dt-bindings/gpio/gpio.h>
+#include <dt-bindings/interrupt-controller/irq.h>
+
+	model = "SMDK24440";
+	compatible = "samsung,smdk2440";
+
+	#address-cells = <1>;
+	#size-cells = <1>;
+	
+	memory@30000000 {
+		device_type = "memory";
+		reg =  <0x30000000 0x4000000>;
+	};
+	
+	/*设置内核启动参数*/
+	chosen {
+		bootargs = "noinitrd root=/dev/mtdblock4 rw init=/linuxrc console=ttySAC0,115200";
+	};
+	
+};
+

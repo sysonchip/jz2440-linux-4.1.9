@@ -1,0 +1,24 @@
+#
+# my test driver configuration
+#
+
+menu "My Test Driver support"
+
+config MY_TEST_DRIVER
+    bool "My Test Driver support"
+	default y
+
+
+if MY_TEST_DRIVER
+
+source "drivers/my_drv/00_misc_device_drv/Kconfig"
+source "drivers/my_drv/01_chrdev/Kconfig"
+source "drivers/my_drv/02_platform_led_drv/Kconfig"
+
+source "drivers/my_drv/test_drv/Kconfig"
+
+
+endif
+
+endmenu
+

@@ -1,0 +1,15 @@
+menu "Test Platform Led Driver support"
+
+
+config TEST_PLATFORM_LED
+	bool "Test Platform Led Driver support"
+	default y
+	depends on MY_TEST_DRIVER
+	help
+	  This option enables support for the test platform led 
+	  on my test driver.
+
+
+
+endmenu
+
